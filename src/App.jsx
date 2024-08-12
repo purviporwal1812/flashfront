@@ -9,7 +9,7 @@ const App = () => {
   useEffect(() => {
     const fetchFlashcards = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/flashcards');
+        const response = await fetch('https://flashback-two.vercel.app/api/flashcards');
         const data = await response.json();
         setFlashcards(data);
       } catch (error) {

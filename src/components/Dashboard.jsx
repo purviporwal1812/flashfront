@@ -13,7 +13,7 @@ const Dashboard = () => {
 
   const fetchFlashcards = async () => {
     try {
-      const response = await axios.get('/api/flashcards');
+      const response = await axios.get('https://flashback-two.vercel.app/api/flashcards');
       setFlashcards(response.data);
     } catch (error) {
       console.error('Error fetching flashcards:', error);
@@ -26,7 +26,7 @@ const Dashboard = () => {
 
   const handleAdd = async () => {
     try {
-      const response = await axios.post('/api/flashcards', form);
+      const response = await axios.post('https://flashback-two.vercel.app/api/flashcards', form);
       setFlashcards([...flashcards, { id: response.data.id, ...form }]);
       setForm({ question: '', answer: '' });
     } catch (error) {
@@ -36,7 +36,7 @@ const Dashboard = () => {
 
   const handleEdit = async () => {
     try {
-      await axios.put(`/api/flashcards/${editId}`, form);
+      await axios.put(`https://flashback-two.vercel.app/api/flashcards/${editId}`, form);
       setFlashcards(flashcards.map(flashcard =>
         flashcard.id === editId ? { ...flashcard, ...form } : flashcard
       ));
@@ -49,7 +49,7 @@ const Dashboard = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`/api/flashcards/${id}`);
+      await axios.delete(`https://flashback-two.vercel.app/api/flashcards/${id}`);
       setFlashcards(flashcards.filter(flashcard => flashcard.id !== id));
     } catch (error) {
       console.error('Error deleting flashcard:', error);
